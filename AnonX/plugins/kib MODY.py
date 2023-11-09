@@ -83,7 +83,7 @@ REPLY_MESSAGE_BUTTONS = [
     ]
 ]
 
-@app.on_message(filters.regex("^/start"))
+@app.on_message(filters.regex("^/start"), group=39)
 async def cpanel(_, message: Message):             
         text = REPLY_MESSAGE
         reply_markup = ReplyKeyboardMarkup(REPLY_MESSAGE_BUTTONS, resize_keyboard=True, selective=True)
@@ -92,7 +92,7 @@ async def cpanel(_, message: Message):
               reply_markup=reply_markup
         )
 
-@app.on_message(filters.regex("^اخفاء الازرار$"))
+@app.on_message(filters.regex("اخفاء الازرار"))
 async def down(client, message):
           m = await message.reply(" **- تم اخفاء الازرار بنجاح **\n\n- لاظهار كيب الاعضاء والتسليه  /start  \n. **", reply_markup= ReplyKeyboardRemove(selective=True))
 
