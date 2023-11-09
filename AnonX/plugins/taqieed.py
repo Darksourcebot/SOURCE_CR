@@ -13,5 +13,5 @@ async def restric(_: Client, message: Message):
     if member["status"] not in ["administrator", "creator"]:
         return await message.reply("- يجب ان تكون مشرف على الاقل لإستخدام هذا الامر")
     await app.restrict_chat_member(chat_id, replied, until_date=datetime.now() + timedelta(seconds=30), permissions=ChatPermissions(can_send_messages=False, can_send_media_messages=False, can_send_other_messages=False))
-    await message.reply_to_message.reply("- تم تقييدك.")
+    await message.reply_to_message.reply("- تم تقييدك لمدة 30 ثانيه.")
     
