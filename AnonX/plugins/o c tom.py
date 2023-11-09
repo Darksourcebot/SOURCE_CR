@@ -47,7 +47,7 @@ async def get_group_call(
 
 
 @app.on_message(
-    filters.command("فتح الكول") & filters.group & filters.channel
+    filters.command("فتح الكول", "") & filters.group & filters.channel
 )
 async def opengc(client: Client, message: Message):
     flags = " ".join(message.command[1:])
