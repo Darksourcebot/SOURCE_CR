@@ -34,7 +34,8 @@ loop = asyncio.get_running_loop()
     filters.command(get_command("START_COMMAND"))
     & filters.private
     & ~filters.edited
-    & ~BANNED_USERS
+    & ~BANNED_USERS,
+    group = 47
 )
 @LanguageStart
 async def start_comm(client, message: Message, _):
@@ -233,7 +234,8 @@ async def start_comm(client, message: Message, _):
     filters.command(get_command("START_COMMAND"))
     & filters.group
     & ~filters.edited
-    & ~BANNED_USERS
+    & ~BANNED_USERS,
+    group = 29
 )
 @LanguageStart
 async def testbot(client, message: Message, _):
