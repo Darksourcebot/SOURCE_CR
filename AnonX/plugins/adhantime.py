@@ -12,8 +12,8 @@ async def sendAdhan(_: Client, message: Message) -> None:
     address: str = message.text.rsplit(maxsplit=1)[-1]
     if address == "مواقيت الصلاة": return await message.reply("- اكتب اسم المنطقه بجانب الأمر،")
     adhan: Union[str, bool] = getAdhan(address)
-    if not adhan: return await message.reply("- حدث خطأ أثناء جلب مواقيت الصلاة.", reply_to_message_id=message.id)
-    await message.reply(adhan, reply_to_message_id=message.id)    
+    if not adhan: return await message.reply("- حدث خطأ أثناء جلب مواقيت الصلاة.", reply_to_message_id=message.message_id)
+    await message.reply(adhan, reply_to_message_id=message.message_id)    
 
 
 def getAdhan(address: str) -> Union[str, bool]:
