@@ -38,7 +38,7 @@ async def huhh(client: Client, message: Message):
                 ],[
                 
                     InlineKeyboardButton(
-                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/ TNT_source"),
+                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/TNT_source"),
                 ],
 
             ]
@@ -156,7 +156,7 @@ async def huhh(client: Client, message: Message):
                  ],[
                 
                     InlineKeyboardButton(
-                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/ TNT_source"),
+                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/TNT_source"),
                 ],
 
             ]
@@ -184,7 +184,7 @@ async def huhh(client: Client, message: Message):
                  ],[
                 
                     InlineKeyboardButton(
-                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/ TNT_source"),
+                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/TNT_source"),
                 ],
 
             ]
