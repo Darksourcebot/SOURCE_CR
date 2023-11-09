@@ -15,7 +15,7 @@ from AnonX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
 from AnonX import app
 from random import  choice, randint
 @app.on_message(
-    command(["سورس مين","سورس","السورس","سورسي", "TNT"])
+    filters.regex(r"^(سورس مين|سورس|السورس|سورسي|TNT)$")
     & ~filters.edited
 )
 async def huhh(client: Client, message: Message):
