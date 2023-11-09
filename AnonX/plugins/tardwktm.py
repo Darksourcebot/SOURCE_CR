@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from pyrogram.enums import ChatMemberStatus
+import requests 
 from AnonX import app
 
 
@@ -8,14 +8,14 @@ banned = []
 @app.on_message(filters.command("كتم", "") & filters.group)
 async def ktm(_: Client, message: Message):
     if message.reply_to_message:
-        member = await app.get_chat_member(message.chat.id, message.from_user.id)
-        memberB = await app.get_chat_member(message.chat.id, message.reply_to_message.from_user.id)
-        if member.status == ChatMemberStatus.ADMINISTRATOR:
-            if memberB.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]:return await message.reply("- لا يمكنك كتم مشرف او مالك", reply_to_message_id=message.id)
+        member = requests.get("https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.from_user.id}")
+        memberB = requests.get("https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.reply_to_message.from_user.id}")
+        if member["status"] == "administrator":
+            if memberB["status"] in ["creator", "administrator"]:return await message.reply("- لا يمكنك كتم مشرف او مالك", reply_to_message_id=message.id)
             banned.append(message.reply_to_message.from_user.id)
             await message.reply("- تم كتم العضو بنجاح!", reply_to_message_id=message.id)
             return
-        elif member.status == ChatMemberStatus.OWNER:
+        elif member["status"] == "creator":
             banned.append(message.reply_to_message.from_user.id)
             await message.reply("- تم كتم العضو بنجاح!", reply_to_message_id=message.id)
             return
@@ -30,14 +30,14 @@ async def ktmf(_: Client, message: Message):
 @app.on_message(filters.command("طرد", ""))
 async def tard(_: Client, message: Message):
     if message.reply_to_message:
-        member = await app.get_chat_member(message.chat.id, message.from_user.id)
-        memberB = await app.get_chat_member(message.chat.id, message.reply_to_message.from_user.id)
-        if member.status == ChatMemberStatus.ADMINISTRATOR:
-            if memberB.status in [ChatMemberStatus.OWNER, ChatMemberStatus.ADMINISTRATOR]:return await message.reply("- لا يمكنك طرد مشرف او مالك", reply_to_message_id=message.id)
+        member = requests.get("https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.from_user.id}")
+        memberB = requests.get("https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.reply_to_message.from_user.id}")
+        if member["status"] == "administrator":
+            if memberB["status"] in ["creator", "administrator"]:return await message.reply("- لا يمكنك طرد مشرف او مالك", reply_to_message_id=message.id)
             await app.ban_chat_member(message.chat.id, message.reply_to_message.from_user.id)
             await message.reply("- تم حظر العضو بنجاح!", reply_to_message_id=message.id)
             return
-        elif member.status == ChatMemberStatus.OWNER:
+        elif member["status"] == "creator":
             await app.ban_chat_member(message.chat.id, message.reply_to_message.from_user.id)
             await message.reply("- تم الحظر العضو بنجاح!", reply_to_message_id=message.id)
             return
