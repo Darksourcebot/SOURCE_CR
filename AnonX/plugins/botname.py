@@ -1,7 +1,7 @@
 import asyncio
 import random
 from AnonX.misc import SUDOERS
-from pyrogram.types import (Message,InlineKeyboardButton,InlineKeyboardMarkup,CallbackQuery,ChatPrivileges)
+from pyrogram.types import (Message,InlineKeyboardButton,InlineKeyboardMarkup)
 from pyrogram import filters, Client
 from AnonX import app
 from config import *
