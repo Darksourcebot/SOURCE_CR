@@ -3,44 +3,62 @@ from pyrogram.types import Message
 import requests 
 from AnonX import app
 
-
-banned = []
-@app.on_message(filters.command("كتم", "") & filters.group)
+muted = []
+@app.on_message(filters.command("كتم", "") & filters.group & filters.reply)
 async def ktm(_: Client, message: Message):
     if message.reply_to_message:
-        member = requests.get("https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.from_user.id}")
-        memberB = requests.get("https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.reply_to_message.from_user.id}")
-        if member["status"] == "administrator":
-            if memberB["status"] in ["creator", "administrator"]:return await message.reply("- لا يمكنك كتم مشرف او مالك", reply_to_message_id=message.id)
-            banned.append(message.reply_to_message.from_user.id)
+        member = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.from_user.id}").json()
+        memberB = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.reply_to_message.from_user.id}").json()
+        if member["result"]["status"] == "administrator":
+            if memberB["result"]["status"] in ["creator", "administrator"]:return await message.reply("- لا يمكنك كتم مشرف او مالك", reply_to_message_id=message.id)
+            muted.append(message.reply_to_message.from_user.id)
             await message.reply("- تم كتم العضو بنجاح!", reply_to_message_id=message.id)
             return
-        elif member["status"] == "creator":
-            banned.append(message.reply_to_message.from_user.id)
+        elif member["result"]["status"] == "creator":
+            muted.append(message.reply_to_message.from_user.id)
             await message.reply("- تم كتم العضو بنجاح!", reply_to_message_id=message.id)
             return
         else: await message.reply("- يجب ان تكون ادمن على الاقل لإستخدام هذا الامر.", reply_to_message_id=message.id)
 
 
-@app.on_message(filters.group, group=928)
+@app.on_message(filters.command("الغاء كتم", "") & filters.group & filters.reply)
+async def unktm(_: Client, message: Message):
+    if message.reply_to_message:
+        member = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.from_user.id}").json()
+        if member["result"]["status"] == "administrator":
+            if message.from_user.id not in muted: return message.reply("- هذا المستخدم غير مكتوم!")
+            muted.pop(message.reply_to_message.from_user.id)
+            await message.reply("- تم الغاء كتم العضو بنجاح!", reply_to_message_id=message.id)
+            return
+        elif member["result"]["status"] == "creator":
+            if message.from_user.id not in muted: return message.reply("- هذا المستخدم غير مكتوم!")
+            muted.pop(message.reply_to_message.from_user.id)
+            await message.reply("- تم الغاء كتم العضو بنجاح!", reply_to_message_id=message.id)
+            return
+        else: await message.reply("- يجب ان تكون ادمن على الاقل لإستخدام هذا الامر.", reply_to_message_id=message.id)
+
+
+
+@app.on_message(filters.text & filters.group, group=928)
 async def ktmf(_: Client, message: Message):
-    if message.from_user.id in banned: await message.delete()
+    if message.from_user.id in muted: await message.delete()
     
 
-@app.on_message(filters.command("طرد", ""))
+@app.on_message(filters.command("طرد", "") & filters.group & filters.reply)
 async def tard(_: Client, message: Message):
     if message.reply_to_message:
-        member = requests.get("https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.from_user.id}")
-        memberB = requests.get("https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.reply_to_message.from_user.id}")
-        if member["status"] == "administrator":
-            if memberB["status"] in ["creator", "administrator"]:return await message.reply("- لا يمكنك طرد مشرف او مالك", reply_to_message_id=message.id)
-            await app.ban_chat_member(message.chat.id, message.reply_to_message.from_user.id)
-            await message.reply("- تم حظر العضو بنجاح!", reply_to_message_id=message.id)
+        member = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.from_user.id}").json()
+        memberB = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.reply_to_message.from_user.id}").json()
+        if member["result"]["status"] == "administrator":
+            if memberB["result"]["status"] in ["creator", "administrator"]:return await message.reply("- لا يمكنك طرد مشرف او مالك", reply_to_message_id=message.id)
+            try:await app.ban_chat_member(message.chat.id, message.reply_to_message.from_user.id)
+            except: return await message.reply("- ليس لدي الصلاحيه لطرد هذا العضو")
+            await message.reply("- تم طرد العضو بنجاح!", reply_to_message_id=message.id)
             return
-        elif member["status"] == "creator":
-            await app.ban_chat_member(message.chat.id, message.reply_to_message.from_user.id)
-            await message.reply("- تم الحظر العضو بنجاح!", reply_to_message_id=message.id)
+        elif member["result"]["status"] == "creator":
+            try:await app.ban_chat_member(message.chat.id, message.reply_to_message.from_user.id)
+            except: return await message.reply("- ليس لدي الصلاحيه لطرد هذا العضو")
+            await message.reply("- تم طرد العضو بنجاح!", reply_to_message_id=message.id)
             return
         else: await message.reply("- يجب ان تكون ادمن على الاقل لإستخدام هذا الامر.", reply_to_message_id=message.id)
-
     
