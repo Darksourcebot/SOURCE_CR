@@ -16,7 +16,7 @@ from pyrogram.errors import MessageNotModified
 
 
 @app.on_message(
-    filters.command("cr")
+    filters.command("tnt")
     
 )
 async def cr_source(client: Client, message: Message):
@@ -36,7 +36,7 @@ async def cr_source(client: Client, message: Message):
                 ],[
                 
                     InlineKeyboardButton(
-                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/ TNT_source"),
+                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/TNT_source"),
                 ],
 
             ]
@@ -76,7 +76,7 @@ async def cr_back(_, callback_query: CallbackQuery):
             [InlineKeyboardButton("طريقة الإستخدام", callback_data="tommm")],
             [InlineKeyboardButton("Monzer مــنــذر", url=f"https://t.me/IIIIIiQz"),
              InlineKeyboardButton("𝐄3𝐃𝐀𝐌", url=f"https://t.me/DAD_E3DAM")],
-            [InlineKeyboardButton("★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/ TNT_source")],
+            [InlineKeyboardButton("★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/TNT_source")],
         ]
     ))
 
