@@ -26,7 +26,7 @@ async def unktm(_: Client, message: Message):
     if message.reply_to_message:
         member = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.from_user.id}").json()
         if member["result"]["status"] == "administrator":
-            if message.from_user.id not in muted: return message.reply("- هذا المستخدم غير مكتوم!")
+            if message.reply_to_message.from_user.id not in muted: return await message.reply("- هذا المستخدم غير مكتوم!")
             muted.pop(message.reply_to_message.from_user.id)
             await message.reply("- تم الغاء كتم العضو بنجاح!", reply_to_message_id=message.id)
             return
