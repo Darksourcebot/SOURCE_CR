@@ -1,4 +1,4 @@
-from requests import Session
+import requests as s
 from requests import Response
 from typing import Union
 from pyrogram import Client, filters
@@ -6,7 +6,7 @@ from pyrogram.types import Message
 from AnonX import app
 
 
-s = Session()
+#s = Session()
 @app.on_message(filters.regex(r"^(مواقيت صلاة|مواقيت صلاه|صلوات)"))
 async def sendAdhan(_: Client, message: Message) -> None:
     address: str = message.text.rsplit(maxsplit=1)[-1]
