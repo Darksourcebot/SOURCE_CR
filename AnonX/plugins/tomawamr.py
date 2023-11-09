@@ -1,18 +1,9 @@
-import asyncio
-import os
 from pyrogram.types import CallbackQuery
-from AnonX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
+#from AnonX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
 from AnonX import app
-import requests
-import pyrogram
-from pyrogram import Client, emoji 
-from config import *
+from pyrogram import Client 
 from pyrogram import filters
-from strings.filters import command
-from config import OWNER_ID
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup
-from pyrogram.errors import MessageNotModified
-
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
 
 
 @app.on_message(
@@ -35,7 +26,7 @@ async def cr_source(client: Client, message: Message):
                 ],[
                 
                     InlineKeyboardButton(
-                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/ TNT_source"),
+                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/TNT_source"),
                 ],
 
             ]
@@ -46,7 +37,7 @@ async def cr_source(client: Client, message: Message):
 
     
 @app.on_callback_query(filters.regex("gr"))
-async def cr_usage(_, callback_query: CallbackQuery):
+async def crusage(_, callback_query: CallbackQuery):
     await callback_query.answer()
     await callback_query.message.edit_text(
         text="""**⩹━★⊷⌯⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⌯⊶★━⩺**
@@ -121,7 +112,7 @@ async def cr_usage(_, callback_query: CallbackQuery):
     )
 
 @app.on_callback_query(filters.regex("adm"))
-async def cr_usage(_, callback_query: CallbackQuery):
+async def c_usage(_, callback_query: CallbackQuery):
     await callback_query.answer()
     await callback_query.message.edit_text(
         text="""**⩹━★⊷⌯⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⌯⊶★━⩺**
@@ -182,9 +173,9 @@ async def cr_usage(_, callback_query: CallbackQuery):
     
 @app.on_callback_query(filters.regex("back"))
 async def cr_back(_, callback_query: CallbackQuery):
-    await message.reply_photo(
-        photo=f"https://telegra.ph/file/520cb8756d31bb3184de2.jpg",
-        caption=f"""**⩹━★⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺**\nمرحبا بك عزيزي {message.from_user.mention}\nهذا قسم الاوامر الخاص بسورس كرستين \nلمعرفة الاوامر اضغط على الأزرار بالأسفل👇\n**⩹━★⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺**""",
+    await callback_query.edit_message_media(
+        media=InputMediaPhoto("https://telegra.ph/file/520cb8756d31bb3184de2.jpg",
+        caption=f"""**⩹━★⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺**\nمرحبا بك عزيزي {callback_query.from_user.mention}\nهذا قسم الاوامر الخاص بسورس كرستين \nلمعرفة الاوامر اضغط على الأزرار بالأسفل👇\n**⩹━★⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺**""",),
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -198,7 +189,7 @@ async def cr_back(_, callback_query: CallbackQuery):
                 ],[
                 
                     InlineKeyboardButton(
-                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/ TNT_source"),
+                        "★⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡", url=f"https://t.me/TNT_source"),
                 ],
 
             ]
@@ -206,4 +197,3 @@ async def cr_back(_, callback_query: CallbackQuery):
         ),
 
     )
-
