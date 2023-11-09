@@ -1,9 +1,9 @@
 import asyncio
 import random
-from AnonXMusic.misc import SUDOERS
+from AnonX.misc import SUDOERS
 from pyrogram.types import (Message,InlineKeyboardButton,InlineKeyboardMarkup,CallbackQuery,ChatPrivileges)
 from pyrogram import filters, Client
-from AnonXMusic import app
+from AnonX import app
 from config import *
 
 bot_name = {}
