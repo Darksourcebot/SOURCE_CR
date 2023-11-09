@@ -4,9 +4,9 @@ from AnonX import app
 import os
 
 
-@app.on_chat_member_updated(filters=lambda _, response: response.new_chat_member)
+@app.on_chat_member_updated(filters=lambda _, response: response.new_chat_member, group=847)
 async def WelcomeDev(_, response: ChatMemberUpdated):
-    dev_id = 6085292025 # حط ايديك هنا
+    dev_id = 5451878368 # حط ايديك هنا
     if response.from_user.id == dev_id:
         info = await app.get_chat(dev_id)
         name = info.first_name
