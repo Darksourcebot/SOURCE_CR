@@ -1,6 +1,4 @@
 from pyrogram import Client, filters
-from pyrogram import enums
-from pyrogram.enums import ChatMembersFilter, ChatMemberStatus , ChatType
 from pyrogram.types import ChatPermissions #ChatPrivileges
 import asyncio, requests 
 from Anonx import app
@@ -109,7 +107,7 @@ def promote_g_admin(client, message):
 
     tom_id = message.from_user.id
     chat_id = message.chat.id
-    ToM= ChatPrivileges(
+    ToM= ChatPermissions(
                     can_manage_chat=True,
                     can_delete_messages=True,
                     can_manage_video_chats=True,
@@ -122,7 +120,6 @@ def promote_g_admin(client, message):
                     can_pin_messages=True,
                     is_anonymous=False
                 )
-    tooom = client.get_chat_members(chat_id, filter=ChatMembersFilter.ADMINISTRATORS)
     tooom = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={chat_id}&user_id={user_id}")
     if (toom["status"] == "creator" or toom["status"] == "administrator"):
     	client.promote_chat_member(chat_id, user_id, ToM)
