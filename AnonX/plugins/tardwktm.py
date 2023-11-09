@@ -4,7 +4,7 @@ import requests
 from AnonX import app
 
 muted = []
-@app.on_message(filters.command("كتم", "") & filters.group & filters.reply)
+@app.on_message(filters.command("كتم", "") & filters.group)
 async def ktm(_: Client, message: Message):
     if message.reply_to_message:
         member = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.from_user.id}").json()
@@ -21,7 +21,7 @@ async def ktm(_: Client, message: Message):
         else: await message.reply("- يجب ان تكون ادمن على الاقل لإستخدام هذا الامر.", reply_to_message_id=message.id)
 
 
-@app.on_message(filters.command("الغاء كتم", "") & filters.group & filters.reply)
+@app.on_message(filters.command("الغاء كتم", "") & filters.group)
 async def unktm(_: Client, message: Message):
     if message.reply_to_message:
         member = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.from_user.id}").json()
@@ -44,7 +44,7 @@ async def ktmf(_: Client, message: Message):
     if message.from_user.id in muted: await message.delete()
     
 
-@app.on_message(filters.command("طرد", "") & filters.group & filters.reply)
+@app.on_message(filters.command("طرد", "") & filters.group)
 async def tard(_: Client, message: Message):
     if message.reply_to_message:
         member = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={message.chat.id}&user_id={message.from_user.id}").json()
