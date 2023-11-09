@@ -4,7 +4,7 @@ from AnonX.core.git import git
 from AnonX.core.userbot import Userbot
 from AnonX.misc import dbb, heroku, sudo
 from aiohttp import ClientSession
-
+import pyromod 
 from .logging import LOGGER
 
 
