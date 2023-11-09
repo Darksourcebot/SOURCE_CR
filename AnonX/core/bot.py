@@ -6,6 +6,8 @@ import config
 
 from ..logging import LOGGER
 
+import pyromod
+
 
 
 class AnonXBot(Client):
