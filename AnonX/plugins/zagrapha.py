@@ -8,8 +8,8 @@ from AnonX import app
 @app.on_message(filters.command("زخرفة", ""))
 async def zhakhrafa(_, message: Message):
     data = message.text.split(maxsplit=1)
-    if len(data) < 2: return await message.reply("- ازخرف اي؟؟", reply_to_message_id=message.id)
-    wait = await message.reply("- جارٍ الزخرفه!", reply_to_message_id=message.id)
+    if len(data) < 2: return await message.reply("- ازخرف اي؟؟", reply_to_message_id=message.message_id)
+    wait = await message.reply("- جارٍ الزخرفه!", reply_to_message_id=message.message_id)
     decorated = decorator(data[1])
     text = "\n".join([f"`{text}`" for text in decorated])
     caption = f"- انتهت زخرفة {data[1]}\nاضغط على ماتريده ليتم نسخه.\n\n{text}"
