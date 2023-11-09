@@ -1,8 +1,8 @@
 from pyrogram import Client, filters
 from pyrogram import enums
 from pyrogram.enums import ChatMembersFilter, ChatMemberStatus , ChatType
-from pyrogram.types import ChatPermissions, ChatPrivileges
-import asyncio
+from pyrogram.types import ChatPermissions #ChatPrivileges
+import asyncio, requests 
 from Anonx import app
 #by > @PROGRAMMER_TOM / @BENN_DEV
 
@@ -18,8 +18,8 @@ welcome_enabled = True
 async def welcome(client, chat_member_updated):
     if not welcome_enabled:
         return
-    
-    if chat_member_updated.new_chat_member.status == ChatMemberStatus.BANNED:
+    print(chat_member_updated.new_chat_member.status)
+    if chat_member_updated.new_chat_member.status == "banned":
         kicked_by = chat_member_updated.new_chat_member.restricted_by
         user = chat_member_updated.new_chat_member.user
         
@@ -65,7 +65,7 @@ def promote_c_admin(client, message):
             return
 
     
-    ToM= ChatPrivileges(
+    ToM= ChatPermissions(
                     can_manage_chat=True,
                     can_delete_messages=True,
                     can_manage_video_chats=True,
@@ -123,13 +123,12 @@ def promote_g_admin(client, message):
                     is_anonymous=False
                 )
     tooom = client.get_chat_members(chat_id, filter=ChatMembersFilter.ADMINISTRATORS)
-    for tom in tooom:
-    	if tom.user.id == tom_id and (tom.status == enums.ChatMemberStatus.OWNER or tom.status == enums.ChatMemberStatus.ADMINISTRATOR):
-    		client.promote_chat_member(chat_id, user_id, ToM)
-    		message.reply(f"تم رفع {user_id} ادمن بنجاح")
-    	else:
-    		message.reply("يجب ان تكون مشرف لإستخدام الامر")
+    tooom = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={chat_id}&user_id={user_id}")
+    if (toom["status"] == "creator" or toom["status"] == "administrator"):
+    	client.promote_chat_member(chat_id, user_id, ToM)
+    	message.reply(f"تم رفع {user_id} ادمن بنجاح")
+    else:
+    	message.reply("يجب ان تكون مشرف لإستخدام الامر")
 
 
 	 
-
