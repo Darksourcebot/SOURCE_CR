@@ -4,16 +4,10 @@ import asyncio, requests
 from AnonX import app
 #by > @PROGRAMMER_TOM / @BENN_DEV
 
-
 welcome_enabled = True
 
-
-
-
-
-
 @app.on_chat_member_updated(group=277)
-async def welcome(client, chat_member_updated):
+async def welcome(client: Client, chat_member_updated):
     if not welcome_enabled:
         return
     print(chat_member_updated.new_chat_member.status)
@@ -22,7 +16,7 @@ async def welcome(client, chat_member_updated):
         user = chat_member_updated.new_chat_member.user
         
         if kicked_by is not None and kicked_by.is_self:
-            messagee = f"• المستخدم {user.username} ({user.first_name}) تم طرده من الدردشة بواسطة البوت"
+            message = f"• المستخدم {user.username} ({user.first_name}) تم طرده من الدردشة بواسطة البوت"
         else:
             if kicked_by is not None:
                 message = f"• المستخدم [{user.first_name}](tg://user?id={user.id}) \n• تم طرده من الدردشة بواسطة [{kicked_by.first_name}](tg://user?id={kicked_by.id})\n• ولقد طردته بسبب هذا"
@@ -38,94 +32,34 @@ async def welcome(client, chat_member_updated):
         await client.send_message(chat_member_updated.chat.id, message)
 
 
-
-
-@app.on_message(filters.command("رفع مشرف", "") & filters.channel)
-def promote_c_admin(client, message):
-    if message.reply_to_message and message.reply_to_message.from_user:
-        target = message.reply_to_message.from_user.id
-        user_id = str(target)
-    elif message.reply_to_message is None:
-        target = message.text.split()[2]
-        user = app.get_users(target)
-        if user:
-            user_id = str(user.id)
-        else:
-            message.reply_text("لا يمكن العثور على المستخدم")
-            return
-    else:
-        target = message.text.split()[1].strip("@")
-        user = app.get_users(target)
-        if user:
-            user_id = str(user.id)
-        else:
-            message.reply_text("لا يمكن العثور على المستخدم")
-            return
-
-    
-    ToM= ChatPermissions(
-                    can_manage_chat=True,
-                    can_delete_messages=True,
-                    can_manage_video_chats=True,
-                    can_restrict_members=True,
-                    can_promote_members=False,
-                    can_change_info=False,
-                    can_post_messages=True,
-                    can_edit_messages=True,
-                    can_invite_users=True,
-                    can_pin_messages=False,
-                    is_anonymous=False
-                )
-    chat_id = message.chat.id
-    client.promote_chat_member(chat_id, user_id, ToM)
-    message.reply(f"تم رفع {user_id} ادمن بنجاح")
-    
-
-
-
 @app.on_message(filters.command("رفع مشرف", "") & filters.group)
-def promote_g_admin(client, message):
+async def promote_g_admin(client: Client, message):
     if message.reply_to_message and message.reply_to_message.from_user:
         target = message.reply_to_message.from_user.id
         user_id = str(target)
     elif message.reply_to_message is None:
         target = message.text.split()[2]
-        user = app.get_users(target)
+        user = await app.get_users(target)
         if user:
             user_id = str(user.id)
         else:
-            message.reply_text("لا يمكن العثور على المستخدم")
+            await message.reply_text("لا يمكن العثور على المستخدم")
             return
     else:
         target = message.text.split()[1].strip("@")
-        user = app.get_users(target)
+        user = await app.get_users(target)
         if user:
             user_id = str(user.id)
         else:
-            message.reply_text("لا يمكن العثور على المستخدم")
+            await message.reply_text("لا يمكن العثور على المستخدم")
             return
 
     tom_id = message.from_user.id
     chat_id = message.chat.id
-    ToM= ChatPermissions(
-                    can_manage_chat=True,
-                    can_delete_messages=True,
-                    can_manage_video_chats=True,
-                    can_restrict_members=True,
-                    can_promote_members=True,
-                    can_change_info=True,
-                    can_post_messages=False,
-                    can_edit_messages=False,
-                    can_invite_users=True,
-                    can_pin_messages=True,
-                    is_anonymous=False
-                )
-    tooom = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={chat_id}&user_id={user_id}")
-    if (toom["status"] == "creator" or toom["status"] == "administrator"):
-    	client.promote_chat_member(chat_id, user_id, ToM)
-    	message.reply(f"تم رفع {user_id} ادمن بنجاح")
+    toom = requests.get(f"https://api.telegram.org/bot{app.bot_token}/getChatMember?chat_id={chat_id}&user_id={tom_id}").json()
+    if (toom["result"]["status"] == "creator" or toom["result"]["status"] == "administrator"):
+        await client.promote_chat_member(chat_id, user_id, can_invite_users=True, can_pin_messages=True, can_delete_messages=True)
+        await message.reply(f"تم رفع {user_id} ادمن بنجاح")
     else:
-    	message.reply("يجب ان تكون مشرف لإستخدام الامر")
-
-
+        await message.reply("يجب ان تكون مشرف لإستخدام الامر")
 	 
