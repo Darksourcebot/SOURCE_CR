@@ -168,6 +168,7 @@ async def ihd(client: Client, message: Message):
     )
 
 @app.on_message(command(["فيلم", "فيلمك. 🎥"]))
+@app.on_message(filters.regex(r"فيلمك"))
 async def ihd(client: Client, message: Message):
     rl = random.randint(1,50)
     url = f"https://t.me/gyigkk/{rl}"
