@@ -15,13 +15,13 @@ from random import  choice, randint
 
                 
 @app.on_message(
-    command(["مطورين سي ار","المطورين","مطورين","مطورين tnt"])
+    command(["مطورين سي ار","المطورين","مطورين","مطورين cr"])
     & ~filters.edited
 )
 async def huhh(client: Client, message: Message):
     await message.reply_photo(
         photo=f"https://telegra.ph/file/520cb8756d31bb3184de2.jpg",
-        caption=f"""**⩹━★⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺**\nمرحبا بك عزيزي {message.from_user.mention} في قسم مطورين tnt ميوزك\nللتحدث مع مطورين اضغط علي الازرار بالاسفل👇\n**⩹━★⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺**""",
+        caption=f"""**⩹━★⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺**\nمرحبا بك عزيزي {message.from_user.mention} في قسم مطورين cr ميوزك\nللتحدث مع مطورين اضغط علي الازرار بالاسفل👇\n**⩹━★⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -102,7 +102,7 @@ async def yas(client, message):
     & ~filters.edited
 )
 async def yas(client, message):
-    usr = await client.get_chat("dr_tntiss")
+    usr = await client.get_chat("dr_criss")
     name = usr.first_name
     photo = await app.download_media(usr.photo.big_file_id)
     await message.reply_photo(photo,       caption=f"**⩹━★⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺\n\n‍ ¦ᦔꫀꪜ :{name}\n ¦ꪊ𝘴ꫀ𝘳 :@{usr.username}\n ¦Ꭵժ :`{usr.id}`\n ¦ႦᎥ᥆ :{usr.bio}\n\n**⩹━★⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺**", 
@@ -147,7 +147,7 @@ async def yas(client, message):
 async def huhh(client: Client, message: Message):
     await message.reply_photo(
         photo=f"https://telegra.ph/file/520cb8756d31bb3184de2.jpg",
-        caption=f"""**⩹⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━━⩺**\nمرحبا بك عزيزي {message.from_user.mention} في قسم الذكاء الاصتناعي الخاص بسورس tnt\nلتتمكن من استخدام اوامر الذكاء الاصتناعي اكتب \n /gpt + السؤال بالاسفل👇\n**⩹━━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━━⩺**""",
+        caption=f"""**⩹⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━━⩺**\nمرحبا بك عزيزي {message.from_user.mention} في قسم الذكاء الاصتناعي الخاص بسورس cr\nلتتمكن من استخدام اوامر الذكاء الاصتناعي اكتب \n /gpt + السؤال بالاسفل👇\n**⩹━━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━━⩺**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -175,7 +175,7 @@ async def huhh(client: Client, message: Message):
 async def huhh(client: Client, message: Message):
     await message.reply_photo(
         photo=f"https://telegra.ph/file/520cb8756d31bb3184de2.jpg",
-        caption=f"""**⩹⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━━⩺**\nمرحبا بك عزيزي {message.from_user.mention} في قسم تشغيل القرأن الخاص بسورس tnt\nلتتمكن من استخدام اوامر القرأن اكتب \n سورة + اسم السورة بالاسفل👇\n**⩹━━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━━⩺**""",
+        caption=f"""**⩹⊷━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━━⩺**\nمرحبا بك عزيزي {message.from_user.mention} في قسم تشغيل القرأن الخاص بسورس cr\nلتتمكن من استخدام اوامر القرأن اكتب \n سورة + اسم السورة بالاسفل👇\n**⩹━━⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━━⩺**""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
