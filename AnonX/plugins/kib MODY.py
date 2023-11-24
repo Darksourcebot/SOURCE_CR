@@ -101,12 +101,12 @@ async def down(client, message):
 @app.on_message(filters.regex("يـوتيوب. 📽"))
 async def reply_to_HEY(client, message):
     await message.reply_photo(
-        photo=f"https://telegra.ph/file/520cb8756d31bb3184de2.jpg",
+        photo=f"https://telegra.ph/file/e7bb54b34faadd2c9b199.jpg",
         caption=f"""**يتم استخدام هذا الامر لعرض تحميل من اليوتيوب**\n**استخدم الامر بهذا الشكل** `تنزيل` ** او ** `يوتيوب` ** كمثل تنزيل سوره الرحمن اضغط علي الامر لنسخ والاستخدام**""",
         reply_markup=InlineKeyboardMarkup(
             [
             [
-                InlineKeyboardButton("ՏΌႮᎡᏟᎬ ͲΝͲ", url=f"https://t.me/TNT_source"),
+                InlineKeyboardButton("ՏΌႮᎡᏟᎬ 𝑪𝑹", url=f"https://t.me/SOURCE_CR"),
             ]
          ]
      )
