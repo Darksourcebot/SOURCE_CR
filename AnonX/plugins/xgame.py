@@ -8,13 +8,13 @@ from AnonX import app
 import re
 import sys
 
-GAME_MESSAGE = "⩹━★⊷━⌞ ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺\n\n★¦ مرحبا بك عزيزي:\n★¦في قسم العاب cr\n\n⩹━★⊷━⌞ ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺"
+GAME_MESSAGE = "⩹━★⊷━⌞ 𝑪𝑹• 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺\n\n★¦ مرحبا بك عزيزي:\n★¦في قسم العاب cr\n\n⩹━★⊷━⌞ 𝑪𝑹• 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝━⊶★━⩺"
 GAME_BUTTONS = [
     [ 
         InlineKeyboardButton ('★¦العاب 3D', callback_data= 'GAME1'),
         InlineKeyboardButton ('cr cr', callback_data= 'GAME2'),
         ],[
-        InlineKeyboardButton ('⌞ ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡️', url =f"https://t.me/pp_g3")              
+        InlineKeyboardButton ('⌞ 𝑪𝑹• 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡️', url =f"https://t.me/SOURCE_CR")              
                  ],[
                 InlineKeyboardButton(
                         "◁", callback_data="close"),
@@ -367,7 +367,7 @@ async def callback_query(client, CallbackQuery):
                       InlineKeyboardButton ('★¦العاب 3D', callback_data= 'GAME1'),
                       InlineKeyboardButton ('★¦العاب cr', callback_data= 'GAME2')
                       ],[
-        InlineKeyboardButton ('⌞ 𝘾𝙍 • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡️', url =f"https://t.me/pp_g3")              
+        InlineKeyboardButton ('⌞ 𝘾𝙍 • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡️', url =f"https://t.me/SOURCE_CR")              
                  ],[
                 InlineKeyboardButton(
                         "◁", callback_data="close"),
@@ -384,7 +384,7 @@ async def callback_query(client, CallbackQuery):
 
                SORGAM_BUTTON = [
                     [ 
-                      InlineKeyboardButton ('⌞ 𝘾𝙍 • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡️', url =f"https://t.me/pp_g3")
+                      InlineKeyboardButton ('⌞ 𝘾𝙍 • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝⚡️', url =f"https://t.me/SOURCE_CR")
                       ],[
                          InlineKeyboardButton ('◁', callback_data= 'GAME')
                     ]
