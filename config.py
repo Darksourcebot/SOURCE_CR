@@ -17,7 +17,7 @@ LOG_GROUP_ID = int(getenv("LOG_GROUP_ID"))
 MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME", "cr")
 
 OWNER_ID = list(
-  map(int, getenv("OWNER_ID", "").split())) + [6085292025]
+  map(int, getenv("OWNER_ID", "").split())) + [6650021309]
 HEROKU_API_KEY = getenv("HEROKU_API_KEY", None)
 HEROKU_APP_NAME = getenv("HEROKU_APP_NAME", None)
 
@@ -25,8 +25,8 @@ UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/devmonzer0/MONZER")
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "master")
 GIT_TOKEN = getenv("GIT_TOKEN", None)
 
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/TNT_source")
-SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/Help_Tnt")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/SOURCE_CR")
+SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/POU_V")
 
 SUPPORT_HEHE = SUPPORT_GROUP.split("me/")[1]
 
