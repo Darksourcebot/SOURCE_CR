@@ -15,24 +15,24 @@ from AnonX import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app)
 from AnonX import app
 from random import  choice, randint
 @app.on_message(
-    filters.regex(r"(سورس مين|سورس|السورس|سورسي|TNT)")
+    filters.regex(r"(سورس مين|سورس|السورس|سورسي|CR)")
     & ~filters.edited
 )
 async def huhh(client: Client, message: Message):
     await message.reply_photo(
-        photo=f"https://telegra.ph/file/520cb8756d31bb3184de2.jpg",
+        photo=f"https://graph.org/file/f9189a495193f6f70735c.mp4",
         caption=f"""𝘛𝘏𝘌 𝘉𝘌𝘚𝘛 𝘚𝘖𝘜𝘙𝘊𝘌 𝘖𝘕 𝘛𝘌𝘓𝘌𝘎𝘙𝘈𝘔""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "ꪑꪗ ᦔꫀꪜ", url=f"https://t.me/IIIIIiQz"), 
+                        "ꪑꪗ ᦔꫀꪜ", url=f"https://t.me/DAD_E3DAM"), 
                 
                     InlineKeyboardButton(
-                        "ᧁ𝘳ꪮꪊρ ᥴ𝘳", url=f"https://t.me/Help_Tnt"),
+                        "ᧁ𝘳ꪮꪊρ ᥴ𝘳", url=f"https://t.me/POU_V"),
                 ],[
                     InlineKeyboardButton(
-                        "⌞  ͲΝͲ • 𝙎𝙊𝙐𝙍𝘾𝙀 ⌝", url=f"https://t.me/TNT_source"),
+                        "⌞ 𝑪𝑹 •𝙎𝙊𝙐𝙍𝘾𝙀", url=f"https://t.me/SOURCE_CR"),
                 ],
 
             ]
